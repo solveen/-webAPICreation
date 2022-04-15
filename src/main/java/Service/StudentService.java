@@ -15,7 +15,7 @@ public class StudentService {
 
     //save single user
     public StudentModel saveUser(StudentModel studentModel) {
-         userRepositories.save(studentModel);
+        userRepositories.save(studentModel);
         return studentModel;
     }
 
