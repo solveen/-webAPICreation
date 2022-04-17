@@ -1,4 +1,4 @@
-package Model;
+package com.example.webapi.Model;
 
 
 import lombok.AllArgsConstructor;
@@ -18,6 +18,8 @@ public class StudentModel {
     private int id;
     @Column
     private String Username;
+    @Column
+    private String FullName;
     @Column
     private String Password;
 

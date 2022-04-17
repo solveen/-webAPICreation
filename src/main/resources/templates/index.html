@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -30,14 +30,24 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">ID</th>
-                    <th scope="row">User Name</th>
-                    <th scope="row">Password</th>
+                <tr th:each="students: ${studentlist}">
+
+                    <td th:text="${students.id}"></td>
+                    <td th:text="${students.username}"></td>
+                    <td th:text="${students.fullName}"></td>
+                    <td th:text="${students.password}"></td>
                     <th scope="row">
-                        <button type="button" class="btn btn-outline-primary">Edit</button>
-                         &nbsp;&nbsp;
-                        <button type="button" class="btn btn-outline-primary">Delete</button>
+
+                        <button type="button" class="btn btn-danger px-3 button-i"
+                                onclick="window.location.href='@/{deleteStudents}+${user.id}}';">
+                            Edit Users
+                        </button>
+                        <button type="button" class="btn btn-danger px-3 button-i"
+                                onclick="window.location.href='@/{editStudent}+${user.id}';">
+                            Delete
+                        </button>
+
+
                     </th>
 
                 </tr>
