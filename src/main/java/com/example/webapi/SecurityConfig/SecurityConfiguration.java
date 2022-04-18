@@ -10,13 +10,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-        protected void configure(HttpSecurity http) throws Exception {
-            //disabling csrf will remove authentication
-            http.csrf().disable();
-        }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+    }
 
-
-        @Bean
+    @Bean
         public BCryptPasswordEncoder bCryptPasswordEncoder(){
             return new BCryptPasswordEncoder();
         }

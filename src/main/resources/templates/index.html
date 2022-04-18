@@ -11,7 +11,7 @@
 <div class="container mx-auto" style="width: 200px;">
     <div class="row pt-3 pb-3">
         <div class="col-md-12">
-            <button type="button" class="btn btn-outline-primary">Add Users</button>
+       <a th:href="@{/new}">Add new User</a>
 
         </div>
     </div>
@@ -38,14 +38,12 @@
                     <td th:text="${students.password}"></td>
                     <th scope="row">
 
-                        <button type="button" class="btn btn-danger px-3 button-i"
-                                onclick="window.location.href='@/{deleteStudents}+${user.id}}';">
-                            Edit Users
-                        </button>
-                        <button type="button" class="btn btn-danger px-3 button-i"
-                                onclick="window.location.href='@/{editStudent}+${user.id}';">
-                            Delete
-                        </button>
+
+                        <a th:href="@{'/DeleteUsers/' + ${students.id}}">Delete User</a>
+
+                            <a th:href="@{'/edit/' + ${students.id}}">
+                         Edit User
+                        </a>
 
 
                     </th>

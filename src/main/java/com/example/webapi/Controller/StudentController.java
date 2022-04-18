@@ -4,6 +4,7 @@ import com.example.webapi.Model.StudentModel;
 import com.example.webapi.SecurityConfig.SecurityConfiguration;
 import com.example.webapi.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,15 +28,15 @@ public class StudentController {
     //list ma pathako attributes sab model ma gayera basxa
     public String homePage(Model model) {
         List<StudentModel> students = studentService.getStudents();
-        //student list attrbute name uta chainxa html ma th ma use garda pheri
+        //student list attribute name uta chainxa html ma th ma use garda pheri
         model.addAttribute("studentlist", students);
         return "index";
     }
 
     @GetMapping("/new")
     public String addStudents(Model model) {
-        StudentModel studentModel = new StudentModel();
-        model.addAttribute("Student", studentModel);
+        StudentModel student = new StudentModel();
+        model.addAttribute("student", student);
         return "addusers";
     }
 
@@ -48,20 +49,19 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveStudent(@ModelAttribute("modelAttribute") StudentModel studentModel) {
-        studentModel.setPassword(bCryptPasswordEncoder.encode(studentModel.getPassword()));
-        studentService.saveUser(studentModel);
+    public String saveStudent(@ModelAttribute("student") StudentModel student) {
+        student.setPassword(bCryptPasswordEncoder.encode(student.getPassword()));
+        studentService.saveUser(student);
         return "redirect:/";
-
-
     }
 
-    @GetMapping("/edit/{id}")
+
+    @RequestMapping("/edit/{id}")
     public ModelAndView editUser(@PathVariable(name = "id") int id) {
-        //  com.example.webapi.Model and view return garxa ek palta ma
+        //  Model and view return garxa ek palta ma
         ModelAndView modelAndView = new ModelAndView("addusers");
         StudentModel student = studentService.findStudent(id);
-        modelAndView.addObject(student);
+        modelAndView.addObject("student",student);
         return modelAndView;
     }
 }

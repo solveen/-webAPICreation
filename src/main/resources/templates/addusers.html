@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Add Users</title>'
@@ -13,19 +13,19 @@
     <div class="row">
         <div class="col-md-12">
             <h2 class="container mx-auto" style="width: 350px;">Add New User</h2>
-            <form>
+            <form action="#" th:action="@{/save}" th:object="${student}" method="post">
+<!--                <input type="hidden" th:field="*{id}">-->
                 <div class="form-group">
-                    <label for="inputUsername">Username</label>
-                    <input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username">
+                    <label>Username</label>
+                    <input type="text" th:class="form-control"  th:field="*{username}" placeholder="Username" >
                 </div>
                 <div class="form-group">
-                    <label for="inputFullname">FullName</label>
-                    <input type="text" class="form-control" id="inputFullname" placeholder="FullName" name="FullName">
+                    <label>FullName</label>
+                    <input type="text" th:class="form-control"  th:field="*{fullName}" placeholder="FullName" >
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password"
-                           name="password">
+                    <label>Password</label>
+                    <input type="password" th:class="form-control"  th:field="*{password}" placeholder="Password" >
                 </div>
 
                 <div class="container mx-auto" style="width: 220px;">
@@ -34,10 +34,8 @@
             </form>
         </div>
     </div>
+
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
